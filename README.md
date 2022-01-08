@@ -24,7 +24,7 @@
 💛💛💛💛💛💛💛💛⬛⬛⬛💛💛💛💛💛💛⬛💛💛💛  <br />
 
 ## Main classes:
-We used our classes from OOP-Ex2 and we add package game with this classes:`
+We used our classes from OOP-Ex2 and we add package game with this classes:
 
 Agent - Represents the agent that collect the pokemon on the route. <br />
 Pokemon - Represents the pokemons <br />
