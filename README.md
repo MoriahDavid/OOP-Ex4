@@ -26,11 +26,11 @@
 ## Main classes:
 We used our classes from OOP-Ex2 and we add package game with this classes:`
 
-Agent - Represents the agent that collect the pokemon on the route.
-Pokemon - Represents the pokemons
-Info- represents the game server info. We have on this class the time for end and the servers parameters.
-Manager- on this class main algorithm that plans in what way the agents collect the pokemons.
-GameDraw- Displays the draw of the graph, the agents and the pokemons. 
+Agent - Represents the agent that collect the pokemon on the route. <br />
+Pokemon - Represents the pokemons <br />
+Info- represents the game server info. We have on this class the time for end and the servers parameters. <br />
+Manager- on this class main algorithm that plans in what way the agents collect the pokemons. <br />
+GameDraw- Displays the draw of the graph, the agents and the pokemons. <br />
 
 ## Our algorithm:
 The algorithm split to two ways:
