@@ -26,13 +26,15 @@ public class GameDraw extends JPanel {
     private final int EDGE_ARROW_Y_POS = -2;
     private final int EDGE_TEXT_SIZE = 12;
     private BufferedImage img_agent = null;
+    private BufferedImage img_pok_up = null;
+    private BufferedImage img_pok_down = null;
 
     private Color edgeColorMarked = new Color(0x130ED3);
     private Color backGroundColor = new Color(0xF5E7BB);
     private Color nodeColor = new Color(0x7C3751);
     private Color edgeColor = new Color(0x44A98E);
-    private Color edgePositiveColor = new Color(0x1FD266);
-    private Color edgeNegativeColor = new Color(0xDA560E);
+    private Color edgePositiveColor = new Color(0x97c9bd);
+    private Color edgeNegativeColor = new Color(0xf6ce1f);
     private Color pokemonColor = new Color(0xFFEE6E);
     private Color agentColor = new Color(0x7C7B37);
 
@@ -83,6 +85,18 @@ public class GameDraw extends JPanel {
         try {
             File file = new File("res/pokeball.png");
             this.img_agent = ImageIO.read(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            File file = new File("res/pikachu2.png");
+            this.img_pok_down = ImageIO.read(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            File file = new File("res/bulbasaur.png");
+            this.img_pok_up = ImageIO.read(file);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -182,8 +196,7 @@ public class GameDraw extends JPanel {
 
     private void drawPokemons(Graphics2D g2d) {
         if(this.pokemons == null) return;
-        ArrayList<Pokemon> poks = (ArrayList<Pokemon>) this.pokemons.clone();
-        for(Pokemon pok : poks) {
+        for(Pokemon pok : this.pokemons) {
             drawPokemon(g2d, pok);
         }
     }
@@ -302,28 +315,52 @@ public class GameDraw extends JPanel {
 
     private void drawPokemon(Graphics2D g2d, Pokemon a){
         String text = ""+a.getValue();
-        int size = get_node_size(text);
-        int x_pos = convertLocationX(a.getLocation().x()) - size/2;
-        int y_pos = convertLocationY(a.getLocation().y()) - size/2;
 
-        g2d.setColor(this.pokemonColor);
+        if(this.img_pok_down == null || this.img_pok_up==null) {
+            int size = get_node_size(text);
+            int x_pos = convertLocationX(a.getLocation().x()) - size/2;
+            int y_pos = convertLocationY(a.getLocation().y()) - size/2;
 
-        g2d.fillOval(x_pos, y_pos, size, size);
+            g2d.setColor(this.pokemonColor);
 
-        if(a.getType() > 0)
-            g2d.setColor(this.edgePositiveColor);
-        else
-            g2d.setColor(this.edgeNegativeColor);
+            g2d.fillOval(x_pos, y_pos, size, size);
 
-        g2d.setStroke(new BasicStroke(this.pokemon_stroke_width));
-        g2d.drawOval(x_pos, y_pos, size, size);
+            if (a.getType() > 0)
+                g2d.setColor(this.edgePositiveColor);
+            else
+                g2d.setColor(this.edgeNegativeColor);
 
-        Shape s = new Ellipse2D.Float(x_pos, y_pos, size, size);
+            g2d.setStroke(new BasicStroke(this.pokemon_stroke_width));
+            g2d.drawOval(x_pos, y_pos, size, size);
 
-        if (a.isAssigned())
-            g2d.setColor(Color.BLACK);
+            if (a.isAssigned())
+                g2d.setColor(Color.BLACK);
 
-        this.drawCenteredString(g2d, text, s.getBounds(), new Font(null, Font.BOLD, 12));
+            Shape s = new Ellipse2D.Float(x_pos, y_pos, size, size);
+            this.drawCenteredString(g2d, text, s.getBounds(), new Font(null, Font.BOLD, 12));
+        }
+        else{
+            int size = 70;
+            int x_pos = convertLocationX(a.getLocation().x()) - size/2;
+            int y_pos = convertLocationY(a.getLocation().y()) - size/2;
+            g2d.setFont(new Font(null, Font.BOLD, 12));
+            if (a.getType() > 0) {
+                g2d.setColor(Color.WHITE);
+                g2d.drawImage(this.img_pok_up,x_pos,y_pos,size,size,null);
+                if (a.isAssigned())
+                    g2d.setColor(Color.BLACK);
+                g2d.drawString(text, x_pos+10, y_pos+20);
+            }
+            else {
+                g2d.setColor(Color.WHITE);
+                g2d.drawImage(this.img_pok_down,x_pos,y_pos,size,size,null);
+                if (a.isAssigned())
+                    g2d.setColor(Color.BLACK);
+                g2d.drawString(text, x_pos+10, y_pos+60);
+            }
+        }
+
+
     }
 
     private void drawEdge(Graphics2D g, EdgeData edge){

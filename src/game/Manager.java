@@ -1,13 +1,9 @@
 package game;
 
 import api.*;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import gui.GameDraw;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
@@ -65,14 +61,14 @@ public class Manager {
         this.g_draw.set_info(this.info);
 
 
-        this.set_menu(frame);
-
         frame.setSize(1000,600);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         frame.add(this.g_draw);
         this.g_draw.set_update();
         this.g_draw.repaint();
+
+        this.set_menu();
     }
 
     private void stop_game(){
@@ -82,7 +78,7 @@ public class Manager {
         this.g_draw.repaint();
     }
 
-    private void set_menu(JFrame frame){
+    private void set_menu(){
         //Create the menu bar.
         JMenuBar menuBar = new JMenuBar();
 
