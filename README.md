@@ -34,8 +34,8 @@ GameDraw- Displays the draw of the graph, the agents and the pokemons.
 
 ## Our algorithm:
 The algorithm split to two ways:
-* When we have one agent: the agent will go to the closest pokemon and collect it. We check which pokemon closer by checking the shortest path from the agent to each pokemons (src node of the pokemon edge).
-* When we have more than one agent: 
+* **When we have one agent:** the agent will go to the closest pokemon and collect it. We check which pokemon closer by checking the shortest path from the agent to each pokemons (src node of the pokemon edge).
+* **When we have more than one agent:** 
 
 ## Results:
 ## Gui:
