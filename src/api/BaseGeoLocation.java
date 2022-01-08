@@ -45,4 +45,17 @@ public class BaseGeoLocation implements api.GeoLocation {
     public double distance(api.GeoLocation g) {
         return Math.sqrt((Math.pow(g.x()-this._x, 2) + Math.pow(g.y()-this._y, 2) + Math.pow(g.z()-this._z, 2)));
     }
+
+    @Override
+    public String toString() {
+        return "BaseGeoLocation{" + _x + ", " + _y + ", " + _z +'}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseGeoLocation that = (BaseGeoLocation) o;
+        return that._x == this._x  && that._y == this._y  && that._z == this._z;
+    }
 }

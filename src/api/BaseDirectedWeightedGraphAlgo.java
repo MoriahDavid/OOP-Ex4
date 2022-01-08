@@ -33,8 +33,8 @@ public class BaseDirectedWeightedGraphAlgo implements api.DirectedWeightedGraphA
      * @return
      */
     @Override
-    public DirectedWeightedGraph getGraph() {
-        return this.graph;
+    public BaseDirectedWeightedGraph getGraph() {
+        return (BaseDirectedWeightedGraph) this.graph;
     }
 
     /**
@@ -310,6 +310,7 @@ public class BaseDirectedWeightedGraphAlgo implements api.DirectedWeightedGraphA
      */
     public double pathWeight(List<NodeData> l){
         double total_w=0;
+        if(l.size()<2) return 0;
         for(int i=0; i<l.size()-1;i++){
             EdgeData e = this.getGraph().getEdge(l.get(i).getKey(), l.get(i+1).getKey());
             if(e==null){
@@ -440,6 +441,21 @@ public class BaseDirectedWeightedGraphAlgo implements api.DirectedWeightedGraphA
             return false;
         }
 
+    }
+
+    public boolean load_from_buf(String json_buf){
+        try {
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.registerTypeAdapter(BaseDirectedWeightedGraph.class, graphDeserializer);
+            Gson customGson = gsonBuilder.create();
+            BaseDirectedWeightedGraph graph = customGson.fromJson(json_buf, BaseDirectedWeightedGraph.class);
+            if(graph == null) return false;
+            this.graph = graph;
+
+            return true;
+        } catch (JsonSyntaxException | JsonIOException e) {
+            return false;
+        }
     }
 
     // change serialization for specific types

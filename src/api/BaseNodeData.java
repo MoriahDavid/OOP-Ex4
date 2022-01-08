@@ -108,7 +108,11 @@ public class BaseNodeData implements api.NodeData {
         this.tag = t;
     }
 
-    public String toString(){
-        return "("+this.key+")";
+    @Override
+    public String toString() {
+        return "BaseNodeData{" +
+                "key=" + key +
+                ", location=" + location +
+                '}';
     }
 }

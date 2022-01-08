@@ -1,6 +1,9 @@
 package api;
 
 public class BaseEdgeData implements api.EdgeData {
+
+    final double EPS = 0.00000001;
+
     private int tag;
     private String info;
     private NodeData src;
@@ -29,6 +32,13 @@ public class BaseEdgeData implements api.EdgeData {
     @Override
     public int getSrc() {
         return this.src.getKey();
+    }
+
+    public NodeData getSrcObj() {
+        return this.src;
+    }
+    public NodeData getDestObj() {
+        return this.dest;
     }
 
     /**
@@ -89,5 +99,23 @@ public class BaseEdgeData implements api.EdgeData {
     @Override
     public void setTag(int t) {
         this.tag = t;
+    }
+
+    public boolean edge_contains(GeoLocation p){
+        GeoLocation a = this.src.getLocation();
+        GeoLocation b = this.dest.getLocation();
+        if(a.distance(p) + p.distance(b) - a.distance(b) <= EPS)
+            return true;
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseEdgeData{" +
+                "src=" + src.getKey() +
+                ", dest=" + dest.getKey() +
+                ", weight=" + weight +
+                '}';
     }
 }
