@@ -2,7 +2,6 @@ package game;
 
 import api.BaseEdgeData;
 import api.BaseGeoLocation;
-import api.EdgeData;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

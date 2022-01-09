@@ -16,16 +16,6 @@ public class Agent{
     private double speed;
     private BaseGeoLocation pos;
     private LinkedList<Integer> next_nodes;
-    private int last_dest;
-
-
-    public int getLast_dest() {
-        return last_dest;
-    }
-
-    public void setLast_dest(int last_dest) {
-        this.last_dest = last_dest;
-    }
 
     public int get_last_node_in_q(){
         return this.next_nodes.getLast();
@@ -80,7 +70,6 @@ public class Agent{
     }
 
     public int get_next_node(){
-//        System.out.println(this.id + ": " + this.next_nodes);
         return this.next_nodes.pollFirst();
     }
 
@@ -124,6 +113,7 @@ public class Agent{
 
         return l;
     }
+
     public static boolean update_agents(HashMap<Integer, Agent> l, String json_string){
         boolean pos_changed = false;
         JsonArray s = new Gson().fromJson(json_string, JsonObject.class).get("Agents").getAsJsonArray();
