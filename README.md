@@ -66,3 +66,6 @@ Level          | Grade        | Moves        |
 
 ## Tests:
 ## Diagram:
+
+![image](https://user-images.githubusercontent.com/64011788/148699867-ae78767a-ba4b-461b-a26d-a1e92a334371.png)
+
