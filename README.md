@@ -4,9 +4,9 @@
 ![pngaaa com-14402](https://user-images.githubusercontent.com/93945532/148700984-96867c93-8ba1-4d0e-9661-adb1c4edcb98.png)
 
 
- <img align="right" width="260" src="https://user-images.githubusercontent.com/93945532/148700704-633b6232-4714-4fda-8488-8f30b16b1b02.png">
- <img align="right" width="260" src="https://user-images.githubusercontent.com/93945532/148701348-131505d1-68ce-4543-8931-5d0b6e0d84b0.png">
- <img  align="left" width="260" src="https://user-images.githubusercontent.com/93945532/148700752-182e40ef-a31e-455f-8ff1-d6072129c8e3.jpg">
+ <img align="right" width="250" src="https://user-images.githubusercontent.com/93945532/148700704-633b6232-4714-4fda-8488-8f30b16b1b02.png">
+ <img align="right" width="250" src="https://user-images.githubusercontent.com/93945532/148701348-131505d1-68ce-4543-8931-5d0b6e0d84b0.png">
+ <img  align="left" width="250" src="https://user-images.githubusercontent.com/93945532/148700752-182e40ef-a31e-455f-8ff1-d6072129c8e3.jpg">
 
    
  <br />
