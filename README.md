@@ -13,18 +13,18 @@
 ## :large_orange_diamond: Main Classes:
 We used our classes from OOP-Ex2 and we add package game with this classes:
 
-Agent - Represents the agent that collect the pokemon on the route. <br />
-Pokemon - Represents the pokemons <br />
-Info- represents the game server info. We have on this class the time for end and the servers parameters. <br />
-Manager- on this class main algorithm that plans in what way the agents collect the pokemons. <br />
-GameDraw- Displays the draw of the graph, the agents and the pokemons. <br />
+#### :black_small_square: Agent- Represents the agent that collect the pokemon on the route. <br />
+#### :black_small_square: Pokemon - Represents the pokemons <br />
+#### :black_small_square: Info- represents the game server info. We have on this class the time for end and the servers parameters. <br />
+#### :black_small_square: Manager- on this class main algorithm that plans in what way the agents collect the pokemons. <br />
+#### :black_small_square: GameDraw- Displays the draw of the graph, the agents and the pokemons. <br />
 
 <br />
 
 ## :large_orange_diamond: Our Algorithm:
 The algorithm split to two ways:
 * **When we have one agent:** the agent will go to the closest pokemon and collect it. We check which pokemon closer by checking the shortest path from the agent to each pokemons (src node of the pokemon edge).
-* **When we have more than one agent:** 
+* **When we have more than one agent:** for each pokemon the we choose the closest agent for collection it. If the agent has last 5 more nodes to go, we also check if his closest from the others.
 
 <br />
 
@@ -42,15 +42,19 @@ Level          | Grade        | Moves        |
    8           |       130       |   205           |
    9           |      585        |       515       |
   10           |      169        |       201       |
-  11           |              |              |
+  11           |        1181      |      493        |
   12           |        40      |    163          |
-  13           |              |              |
-  14           |              |              |
+  13           |        290      |      444        |
+  14           |      249        |        228      |
   15           |   469           |       493       |
    
 <br />
 
 ## :large_orange_diamond: Gui:
+   For run the game we need run the server and then run the Ex4.jar ("java -jar Ex4.jar") Shuold run in the dir of the project so the resource file work well. <br />
+   Up Edge- in blue. If it has a pokeon it's Bulbasaur. <br />
+   Down Edge- in yellow. If it has a pokeon it's Pikachu. <br />
+   When the Pokemon is classified into a list of one of the agents, its number turned from white into black. <br />
 
 ![image](https://user-images.githubusercontent.com/64011788/148699619-47473fd0-b904-4522-922b-f244dbdcb041.png)
 
@@ -59,7 +63,8 @@ Level          | Grade        | Moves        |
 <br />
 
 ## :large_orange_diamond: Tests:
-
+We tests the main functions on the classes, we reused some of the tests from the Ex2.
+We run all the game levels and check if the algorithm is right. 
 <br />
 
 ## :large_orange_diamond: Diagram:
