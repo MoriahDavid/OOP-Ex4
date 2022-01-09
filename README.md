@@ -58,5 +58,9 @@ Level          | Grade        | Moves        |
   15           |   469           |       493       |
    
 ## Gui:
+
+![image](https://user-images.githubusercontent.com/64011788/148699619-47473fd0-b904-4522-922b-f244dbdcb041.png)
+
+
 ## Tests:
 ## Diagram:
