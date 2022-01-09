@@ -22,7 +22,6 @@ public class Manager {
 
     private HashMap<Integer, Agent> agents;
     private ArrayList<Pokemon> pokemons;
-    private int time_last_loop;
     private Info info;
 
     int last_time_moved;
@@ -79,7 +78,7 @@ public class Manager {
     }
 
     private void set_menu(){
-        //Create the menu bar.
+        // Create the menu bar.
         JMenuBar menuBar = new JMenuBar();
 
         JMenu menu = new JMenu("Stop");
@@ -113,6 +112,10 @@ public class Manager {
         this.update_pok_edges();
 
         create_agents();
+    }
+
+    private void addAgent(int id){
+        this.client.addAgent("{\"id\":" + id + "}");
     }
 
     public void create_agents(){
@@ -169,7 +172,6 @@ public class Manager {
             should_update_gui = true;
             this.update_pok_edges();
         }
-
         if(g_draw != null && should_update_gui){
             this.g_draw.set_update();
             this.g_draw.repaint();
@@ -208,10 +210,12 @@ public class Manager {
         this.client.start();
         this.last_time_moved = Integer.parseInt(client.timeToEnd());
     }
+
     public void move(){
         this.client.move();
         this.last_time_moved = Integer.parseInt(this.client.timeToEnd());
     }
+
     public void choose_next(Agent agent, int node_id){
         int time_to_end = Integer.parseInt(this.client.timeToEnd());
         int agent_id = agent.getId();
@@ -275,14 +279,9 @@ public class Manager {
                 System.out.println("Auto move");
                 this.move();
             }
-
-
-//            try {
-//                Thread.sleep(1);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
         }
+
+        this.info.setIs_running(false);
         this.g_draw.set_update();
         this.g_draw.repaint();
     }
@@ -380,24 +379,6 @@ public class Manager {
             a.add_next_node(closest_p.getEdge().getDest()); // Add the end of the edge
             closest_p.setAssigned();
         }
-    }
-
-    public void choose_next_algo__random(){
-        for(int i=0; i<this.agents.size();i++){
-            Agent agent = this.agents.get(i);
-            if(agent.getDest() == -1) {
-                ArrayList<Integer> nei = this.graph.get_node_neighbors(agent.getSrc());
-                int rand_index = new Random().nextInt(nei.size());
-                int next_node = nei.get(rand_index);
-                choose_next(agent, next_node);
-//                agent.setDest(next_node);
-                System.out.println("agent: "+i+" to node: "+next_node);
-            }
-        }
-    }
-
-    private void addAgent(int id){
-        this.client.addAgent("{\"id\":" + id + "}");
     }
 
     public static void main(String[] args){

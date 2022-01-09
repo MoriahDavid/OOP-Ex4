@@ -9,7 +9,6 @@ public class Ex4 {
         Manager m = new Manager();
         m.init();
         m.update();
-
         m.show();
         m.main_loop();
         System.out.println("Game Over");
