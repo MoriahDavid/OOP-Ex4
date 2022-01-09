@@ -228,7 +228,8 @@ public class Manager {
         int time = (int) Math.round((e.getWeight() / agent.getSpeed())*1000);
 
         this.move_times.add(time_to_end - time-10);
-        this.move_times.add(time_to_end - time+10);
+        if(this.info.agents < 3)
+            this.move_times.add(time_to_end - time+10);
     }
 
     public void collect_pokemons(){
@@ -249,6 +250,9 @@ public class Manager {
 
 
     public void main_loop(){
+
+        int time_ignore = 20;
+
         this.start_game();
 
         while(this.is_running()){
@@ -269,13 +273,13 @@ public class Manager {
             }
 
             if(!this.move_times.isEmpty() && this.move_times.peek() >= this.info.getTime()){
-                if (this.last_time_moved - this.move_times.peek() >= 20) { // very close to the last move
+                if (this.last_time_moved - this.move_times.peek() >= time_ignore) { // very close to the last move
                     this.move();
                 }
                 this.move_times.poll();
             }
-
-            else if(this.last_time_moved - this.info.getTime() > this.MOVE_DELTA) {
+            // For pretty gui
+            else if(this.last_time_moved - this.info.getTime() > this.MOVE_DELTA && this.info.agents < 3) {
                 System.out.println("Auto move");
                 this.move();
             }
