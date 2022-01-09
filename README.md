@@ -24,7 +24,7 @@ We used our classes from OOP-Ex2 and we add package game with this classes:
 ## :large_orange_diamond: Our Algorithm:
 The algorithm split to two ways:
 * **When we have one agent:** the agent will go to the closest pokemon and collect it. We check which pokemon closer by checking the shortest path from the agent to each pokemons (src node of the pokemon edge).
-* **When we have more than one agent:** 
+* **When we have more than one agent:** for each pokemon the we choose the closest agent for collection it. If the agent has last 5 more nodes to go, we also check if his closest from the others.
 
 <br />
 
