@@ -51,6 +51,7 @@ Level          | Grade        | Moves        |
 <br />
 
 ## :large_orange_diamond: Gui:
+   For run the game we need run the server and then run the Ex4.jar ("java -jar Ex4.jar")
    Up Edge- in blue. If it has a pokeon it's Bulbasaur.
    Down Edge- in yellow. If it has a pokeon it's Pikachu.
    When the Pokemon is classified into a list of one of the agents, its number turned from white into black.
@@ -62,7 +63,8 @@ Level          | Grade        | Moves        |
 <br />
 
 ## :large_orange_diamond: Tests:
-
+We tests the main functions on the classes, we reused some of the tests from the Ex2.
+We run all the game levels and check if the algorithm is right. 
 <br />
 
 ## :large_orange_diamond: Diagram:
