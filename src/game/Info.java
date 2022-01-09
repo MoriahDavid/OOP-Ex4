@@ -58,7 +58,12 @@ public class Info {
         this.level = j.get("game_level").getAsInt();
         this.graph = j.get("graph").getAsString();
         this.agents = j.get("agents").getAsInt();
-        this.time = Integer.parseInt(time);
+        try {
+            this.time = Integer.parseInt(time);
+        }
+        catch (NumberFormatException e) {
+            this.time = 0;
+        }
         this.is_running = is_running;
     }
 }

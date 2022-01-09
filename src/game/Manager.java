@@ -248,9 +248,6 @@ public class Manager {
         this.start_game();
 
         while(this.is_running()){
-//            int t = Integer.parseInt(this.client.timeToEnd());
-//            if (t == this.time_last_loop) continue;
-//            this.time_last_loop = t;
 
             this.update();
 
@@ -286,6 +283,8 @@ public class Manager {
 //                e.printStackTrace();
 //            }
         }
+        this.g_draw.set_update();
+        this.g_draw.repaint();
     }
 
     public void choose_next_algo__multi_agents(){
@@ -303,11 +302,20 @@ public class Manager {
                     pok.setAssigned();
                     break;
                 }
-                 // Check if agent is busy
-                if(a.has_next_node() || a.getDest() != -1) continue;
 
-                List<NodeData> path = this.algo.shortestPath(a.getSrc(), dest);
-                if(a.getSrc() == dest){ // The agent is already on the wanted node
+                int agent_pos = a.getSrc();
+
+                if(a.has_next_node()){
+                    agent_pos = a.get_last_node_in_q();
+                    if(a.get_next_nodes_num() > 5)
+                        continue;
+                }
+                else if  (a.getDest() != -1){
+                    agent_pos = a.getDest();
+                }
+
+                List<NodeData> path = this.algo.shortestPath(agent_pos, dest);
+                if(agent_pos == dest){ // The agent is already on the wanted node
                     a.add_next_node(pok.getEdge().getDest());
                     pok.setAssigned();
                 }

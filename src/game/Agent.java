@@ -27,6 +27,10 @@ public class Agent{
         this.last_dest = last_dest;
     }
 
+    public int get_last_node_in_q(){
+        return this.next_nodes.getLast();
+    }
+
     public Agent(int id, double value, int src, int dest, Double speed, BaseGeoLocation pos){
         this.id = id;
         this.value = value;
@@ -78,6 +82,10 @@ public class Agent{
     public int get_next_node(){
 //        System.out.println(this.id + ": " + this.next_nodes);
         return this.next_nodes.pollFirst();
+    }
+
+    public int get_next_nodes_num(){
+        return this.next_nodes.size();
     }
 
     public void set_next_nodes(List<NodeData> l){

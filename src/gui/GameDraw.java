@@ -19,7 +19,7 @@ import java.util.List;
 
 public class GameDraw extends JPanel {
 
-    private static final int MINIMUM_NODE_SIZE = 32;
+    private static final int MINIMUM_NODE_SIZE = 24;
     private static final int NODE_PADDING = 8;
 
     private final int EDGE_ARR_SIZE = 7;
@@ -30,13 +30,16 @@ public class GameDraw extends JPanel {
     private BufferedImage img_pok_down = null;
 
     private Color edgeColorMarked = new Color(0x130ED3);
-    private Color backGroundColor = new Color(0xF5E7BB);
-    private Color nodeColor = new Color(0x7C3751);
+    private Color backGroundColor = new Color(0xFFFFFF);
+    private Color nodeColor = new Color(0x426DDA); //0x6163E8
     private Color edgeColor = new Color(0x44A98E);
     private Color edgePositiveColor = new Color(0x97c9bd);
     private Color edgeNegativeColor = new Color(0xf6ce1f);
     private Color pokemonColor = new Color(0xFFEE6E);
     private Color agentColor = new Color(0x7C7B37);
+    private Color nodeStrokeColor =  new Color(0xFDFDFD);
+    private Color agentStrokeColor = Color.BLACK;
+    private Color pokemonStrokeColor = Color.BLACK;
 
     private HashMap<Integer, Agent> agents;
     private ArrayList<Pokemon> pokemons;
@@ -59,10 +62,7 @@ public class GameDraw extends JPanel {
     private java.util.List<EdgeData> marked_edges;
     private int agent_stroke_width = 3;
     private int agent_size = 10;
-    private int node_stroke_width = 3;
-    private Color nodeStrokeColor =  Color.BLACK;
-    private Color agentStrokeColor = Color.BLACK;
-    private Color pokemonStrokeColor = Color.BLACK;
+    private int node_stroke_width = 1;
     private int pokemon_stroke_width = 2;
     private int edge_stroke_width = 2;
 
@@ -288,7 +288,7 @@ public class GameDraw extends JPanel {
 
     private void drawAgent(Graphics2D g2d, Agent a){
         String text = ""+a.getId();
-        int size = get_node_size(text);
+        int size = 35;
         int x = convertLocationX(a.getLocation().x());
         int y = convertLocationY(a.getLocation().y());
         int x_pos = x - size/2;
